@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: documents-service
+
+server:
+  port: 2222
+      
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://annuaire:1111/eureka/
+
+

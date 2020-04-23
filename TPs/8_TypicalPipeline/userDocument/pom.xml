@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.formation.microservice</groupId>
+  <artifactId>userDocument</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>MicroServices</name>
+  
+
+  <modules>
+  	<module>annuaire</module>
+  	<module>members-service</module>
+  	<module>documents-service</module>
+  	<module>proxy</module>
+	<module>notification-service</module>
+  </modules>
+<build>
+<plugins>
+            <plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-maven-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <testResultsTimestamp>false</testResultsTimestamp>
+                    <overrideRootLogLevel>DEBUG</overrideRootLogLevel>
+                    <suppressJMeterOutput>false</suppressJMeterOutput>
+                    <ignoreResultFailures>true</ignoreResultFailures>
+                    <propertiesUser>
+                        <webservice.host>${performancetest.webservice.host}</webservice.host>
+                        <webservice.port>${performancetest.webservice.port}</webservice.port>
+                        <webservice.path>${performancetest.webservice.path}</webservice.path>
+                        <webservice.connectTimeout>${performancetest.connectTimeout}</webservice.connectTimeout>
+                        <webservice.responseTimeout>${performancetest.responseTimeout}</webservice.responseTimeout>
+                        <threadCount>${performancetest.threadCount}</threadCount>
+                        <loopCount>${performancetest.threadCount}</loopCount>
+                    </propertiesUser>
+                    <propertiesJMeter>
+                        <jmeter.save.saveservice.thread_counts>true</jmeter.save.saveservice.thread_counts>
+                    </propertiesJMeter>
+                    <jmeterPlugins>
+                        <plugin>
+                            <groupId>kg.apc</groupId>
+                            <artifactId>jmeter-plugins</artifactId>
+                        </plugin>
+                    </jmeterPlugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>execute-jmeter-tests</id>
+                        <goals>
+                            <goal>jmeter</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>kg.apc</groupId>
+                        <artifactId>jmeter-plugins</artifactId>
+                        <version>1.0.0</version>
+                        <exclusions>
+                            <!--
+                                Unfortunately some transitive dependencies cannot be found on mvncentral
+                                and we have to explicitly exclude them.
+                                For a complete list, see https://github.com/mlex/jmeter-maven-example/
+                            -->
+                            <exclusion>
+                                <groupId>kg.apc</groupId>
+                                <artifactId>perfmon</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.apache.hadoop</groupId>
+                                <artifactId>hadoop-core</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.apache.hbase</groupId>
+                                <artifactId>hbase</artifactId>
+                            </exclusion>
+                            
+                            <!--
+                                These dependencies would override direct JMeter dependencies,
+                                which results in version conflicts (e.g. NoSuchMethodError on jmeter startup
+                            -->
+                            <exclusion>
+                                <groupId>org.apache.jmeter</groupId>
+                                <artifactId>jorphan</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.apache.bsf</groupId>
+                                <artifactId>bsf-api</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.bouncycastle</groupId>
+                                <artifactId>bcmail-jdk15</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.bouncycastle</groupId>
+                                <artifactId>bcprov-jdk15</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>javax.activation</groupId>
+                                <artifactId>activation</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- plugin>
+                <groupId>com.lazerycode.jmeter</groupId>
+                <artifactId>jmeter-analysis-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <configuration>
+                    <source>${project.build.directory}/jmeter/results/SimpleWebservicePerformanceTest.jtl</source>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-html-report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>analyze</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin -->
+</plugins>
+</build>
+</project>

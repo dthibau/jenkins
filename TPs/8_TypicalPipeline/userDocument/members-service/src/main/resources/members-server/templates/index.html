@@ -1,0 +1,24 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<h1>Microservices Demo - Members Server</h1>
+
+	<p>Members Server Microservice is running.</p>
+
+	<h3>Interface service</h3>
+	<p>Test 2 methods</p>
+
+	<ul>
+		<li><a th:href="@{/Members/1}">User with id 1</a></li>
+		<li><a th:href="@{/Members/owner/thib}">User with partial name 'thib'</a></li>
+	</ul>
+
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>
