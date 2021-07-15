@@ -1,0 +1,65 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<matrix-run plugin="matrix-project@1.18">
+  <actions>
+    <hudson.matrix.MatrixConfiguration_-ParentBuildAction>
+      <parentId>1_multiconf#1</parentId>
+    </hudson.matrix.MatrixConfiguration_-ParentBuildAction>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UpstreamCause>
+            <upstreamProject>1_multiconf</upstreamProject>
+            <upstreamUrl>job/1_multiconf/</upstreamUrl>
+            <upstreamBuild>1</upstreamBuild>
+            <upstreamCauses>
+              <hudson.model.Cause_-UserIdCause>
+                <userId>admin</userId>
+              </hudson.model.Cause_-UserIdCause>
+            </upstreamCauses>
+          </hudson.model.Cause_-UpstreamCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.plugins.git.util.BuildData plugin="git@4.7.1">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/master</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@3.7.1">
+              <sha1>96f9f0d72f0a01e8668d72cecbec23cfe06ff888</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/master</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>1</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>/home/dthibau/Formations/Jenkins/MyWork/multi-module</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <hudson.scm.SCMRevisionState_-None/>
+  </actions>
+  <queueId>17</queueId>
+  <timestamp>1618472398556</timestamp>
+  <startTime>1618472443670</startTime>
+  <result>FAILURE</result>
+  <duration>22961</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn>SSH_Slave</builtOn>
+  <workspace>/home/dthibau/Formations/Jenkins/MyWork/SSHSlave/workspace/1_multiconf/CLOUD/AMAZON/jdk/JDK11</workspace>
+  <hudsonVersion>2.277.1</hudsonVersion>
+  <scm class="hudson.plugins.git.GitChangeLogParser" plugin="git@4.7.1">
+    <authorOrCommitter>false</authorOrCommitter>
+    <showEntireCommitSummaryInChanges>true</showEntireCommitSummaryInChanges>
+  </scm>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</matrix-run>

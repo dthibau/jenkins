@@ -1,0 +1,13 @@
+Started on 7 juin 2021 à 10:27:02
+Using strategy: Default
+[poll] Last Built Revision: Revision 2500042a51a9510a805d7c141ed343f7a61359ee (refs/remotes/origin/master)
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git ls-remote -h -- /home/dthibau/Formations/Jenkins/MyWork/multi-module # timeout=10
+Found 3 remote heads on /home/dthibau/Formations/Jenkins/MyWork/multi-module
+[poll] Latest remote head revision on refs/heads/master is: 2500042a51a9510a805d7c141ed343f7a61359ee - already built by 13
+Done. Took 11 ms
+No changes

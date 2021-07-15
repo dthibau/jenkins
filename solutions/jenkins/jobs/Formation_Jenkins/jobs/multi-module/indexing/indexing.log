@@ -1,0 +1,33 @@
+Lancé par une alarme périodique
+[lun. juin 07 10:28:02 CEST 2021] Starting branch indexing...
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git ls-remote --symref -- /home/dthibau/Formations/Jenkins/MyWork/multi-module # timeout=10
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/caches/git-0c090e3ccf920dd5c41c437ef6311802/.git # timeout=10
+Setting origin to /home/dthibau/Formations/Jenkins/MyWork/multi-module
+ > git config remote.origin.url /home/dthibau/Formations/Jenkins/MyWork/multi-module # timeout=10
+Fetching & pruning origin...
+Listing remote references...
+ > git config --get remote.origin.url # timeout=10
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git ls-remote -h -- /home/dthibau/Formations/Jenkins/MyWork/multi-module # timeout=10
+Fetching upstream changes from origin
+ > git config --get remote.origin.url # timeout=10
+ > git fetch --tags --force --progress --prune -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking branches...
+  Checking branch master
+      ‘Jenkinsfile’ found
+    Met criteria
+No changes detected: master (still at 2500042a51a9510a805d7c141ed343f7a61359ee)
+  Checking branch dev
+      ‘Jenkinsfile’ found
+    Met criteria
+No changes detected: dev (still at 3f9015e825367f5afaadd69b61222f3b345e9674)
+  Checking branch lib
+      ‘Jenkinsfile’ found
+    Met criteria
+No changes detected: lib (still at 7b03a489b6c0b2ac294b534adc5440b4c619c06e)
+Processed 3 branches
+[lun. juin 07 10:28:02 CEST 2021] Finished branch indexing. Indexing took 38 ms
+Finished: SUCCESS

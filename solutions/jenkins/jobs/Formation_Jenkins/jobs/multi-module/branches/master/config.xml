@@ -1,0 +1,52 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.40">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.8.4"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.8.4">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.multibranch.BranchJobProperty plugin="workflow-multibranch@2.23">
+      <branch plugin="branch-api@2.6.3">
+        <sourceId>1315a9d4-5a9d-41bc-a5ba-08698aface5a</sourceId>
+        <head class="jenkins.plugins.git.GitBranchSCMHead" plugin="git@4.7.1">
+          <name>master</name>
+        </head>
+        <scm class="hudson.plugins.git.GitSCM" plugin="git@4.7.1">
+          <configVersion>2</configVersion>
+          <userRemoteConfigs>
+            <hudson.plugins.git.UserRemoteConfig>
+              <name>origin</name>
+              <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
+              <url>/home/dthibau/Formations/Jenkins/MyWork/multi-module</url>
+            </hudson.plugins.git.UserRemoteConfig>
+          </userRemoteConfigs>
+          <branches class="singleton-list">
+            <hudson.plugins.git.BranchSpec>
+              <name>master</name>
+            </hudson.plugins.git.BranchSpec>
+          </branches>
+          <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+          <submoduleCfg class="empty-list"/>
+          <extensions>
+            <jenkins.plugins.git.GitSCMSourceDefaults>
+              <includeTags>false</includeTags>
+            </jenkins.plugins.git.GitSCMSourceDefaults>
+          </extensions>
+        </scm>
+        <properties/>
+        <actions/>
+      </branch>
+    </org.jenkinsci.plugins.workflow.multibranch.BranchJobProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.multibranch.SCMBinder" plugin="workflow-multibranch@2.23">
+    <scriptPath>Jenkinsfile</scriptPath>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

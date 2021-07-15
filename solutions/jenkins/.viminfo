@@ -1,0 +1,98 @@
+# Ce fichier viminfo a été généré par Vim 8.0.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# Viminfo version
+|1,4
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Dernier motif de recherche  :
+~MSle0~/home
+
+# Historique ligne de commande (chronologie décroissante) :
+:wq
+|2,0,1618571916,,"wq"
+
+# Historique chaîne de recherche (chronologie décroissante) :
+?/home/dthiba
+|2,1,1618571871,47,"home/dthiba"
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique Ligne de débogage (chronologie décroissante) :
+
+# Registres :
+"1	LINE	0
+	    </join.JoinTrigger>
+|3,0,1,1,1,0,1616504200,"    </join.JoinTrigger>"
+"2	LINE	0
+	      </resultThreshold>
+|3,0,2,1,1,0,1616504200,"      </resultThreshold>"
+"3	LINE	0
+	        <completeBuild>true</completeBuild>
+|3,0,3,1,1,0,1616504199,"        <completeBuild>true</completeBuild>"
+"4	LINE	0
+	        <color>BLUE</color>
+|3,0,4,1,1,0,1616504199,"        <color>BLUE</color>"
+"5	LINE	0
+	        <ordinal>0</ordinal>
+|3,0,5,1,1,0,1616504199,"        <ordinal>0</ordinal>"
+"6	LINE	0
+	        <name>SUCCESS</name>
+|3,0,6,1,1,0,1616504199,"        <name>SUCCESS</name>"
+"7	LINE	0
+	      <resultThreshold>
+|3,0,7,1,1,0,1616504198,"      <resultThreshold>"
+"8	LINE	0
+	      <joinPublishers/>
+|3,0,8,1,1,0,1616504198,"      <joinPublishers/>"
+"9	LINE	0
+	      <joinProjects></joinProjects>
+|3,0,9,1,1,0,1616504198,"      <joinProjects></joinProjects>"
+""-	CHAR	0
+	/
+|3,1,36,0,1,0,1618571912,"/"
+
+# Marques dans le fichier :
+'0  72  33  ~/.kube/config
+|4,48,72,33,1618571916,"~/.kube/config"
+'1  88  4  ~/jobs/1_package/config.xml
+|4,49,88,4,1616504202,"~/jobs/1_package/config.xml"
+
+# Liste de sauts (le plus récent en premier) :
+-'  72  33  ~/.kube/config
+|4,39,72,33,1618571916,"~/.kube/config"
+-'  16  28  ~/.kube/config
+|4,39,16,28,1618571872,"~/.kube/config"
+-'  1  0  ~/.kube/config
+|4,39,1,0,1618571871,"~/.kube/config"
+-'  88  4  ~/jobs/1_package/config.xml
+|4,39,88,4,1616504202,"~/jobs/1_package/config.xml"
+-'  88  4  ~/jobs/1_package/config.xml
+|4,39,88,4,1616504202,"~/jobs/1_package/config.xml"
+-'  1  0  ~/jobs/1_package/config.xml
+|4,39,1,0,1616504173,"~/jobs/1_package/config.xml"
+-'  1  0  ~/jobs/1_package/config.xml
+|4,39,1,0,1616504173,"~/jobs/1_package/config.xml"
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/.kube/config
+	*	1618571912	0
+	"	72	33
+	^	72	32
+	.	72	33
+	+	71	41
+	+	72	33
+
+> ~/jobs/1_package/config.xml
+	*	1616504200	0
+	"	88	4
+	.	88	0
+	+	88	0
