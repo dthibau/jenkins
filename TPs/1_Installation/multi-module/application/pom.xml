@@ -44,7 +44,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.example</groupId>
+            <groupId>org.formation</groupId>
             <artifactId>gs-multi-module-library</artifactId>
             <version>${project.version}</version>
         </dependency>
