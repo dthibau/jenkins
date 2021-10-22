@@ -1,0 +1,46 @@
+Distinction between CI and CD
+Different kinds of tests
+
+Advantages of a distributed architecture
+ - Notion of fungible(replaceable) nodes, advantages 
+ - Use of cloud resources
+ - Advantages to have no executors on the master, performance
+ - Requirements for an agent (Only user account, network and Java)
+
+
+SCMs 
+ - Type of SCM
+ - Adavantages of hooks against polling
+ - Multibranch, et GitHub/BitBucket Integration
+
+Rest API and Jenkins CLI
+  - How to trigger a build with parameters
+  - How to start polling the the scm
+  - How to access folders
+  - How to configure CLI (the TCP port for example) 
+
+Fingerprint et artefacts
+  - What bring fingerprints 
+
+Good Knowledge of the UI for 
+  - Administration
+  - Free style jobs
+  - Multibranch Pipeline
+  - Interest of folders
+  - What is a view 
+
+Pipeline
+  - Small knowledge of the Syntax
+  - Survival of pipelines after restart
+  - Global Libraries
+
+Security 
+  - Credentials and their scope
+  - Types of credentials supported
+  - Credential Binding Plugin
+
+Installation wizard
+  - The steps of the installation
+  - The default locking mechanism on installation
+  - PluginManager, how to downgrade
+  - How to install a plugin via .hpi 
