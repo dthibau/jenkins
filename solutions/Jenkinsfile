@@ -1,18 +1,22 @@
+def dataCenter = '';
+
 pipeline {
    agent none 
+
     tools {
-        jdk 'JDK11'
         maven 'MAVEN3'
+        jdk 'JDK11'
     }
     stages {
         stage('Compile et tests') {
-            agent any
+            agent any 
             steps {
+                echo 'Unit test et packaging'
                 sh 'mvn -Dmaven.test.failure.ignore=true clean package'
             }
             post {
                 always {
-                    junit '**/surefire-reports/*.xml'
+                    junit '**/target/surefire-reports/*.xml'
                 }
                 success {
                     archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
@@ -20,26 +24,26 @@ pipeline {
                         stash includes: '*.jar', name: 'app'
                     }
                 }
-                unsuccessful {
-                    mail bcc: '', body: 'Please correct ASAP', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'david.thibau@gmail.com'
+                failure {
+                    mail bcc: '', body: 'Please review', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'david.thibau@sparks.com'
                 }
             }
-
-             
         }
         stage('Analyse qualité et test intégration') {
             parallel {
                 stage('Tests d integration') {
-                    agent any
+                    agent any 
                     steps {
-                        sh 'mvn clean integration-test'
+                        echo 'Tests d integration'
+                        sh 'mvn -Dmaven.test.failure.ignore=true integration-test'
                     }
                     
                 }
                  stage('Analyse Sonar') {
-                      agent any
+                     agent any
                      steps {
-                        sh 'mvn -Dsonar.login=admin -Dsonar.password=admin123 clean verify sonar:sonar'
+                        echo 'Analyse sonar'
+                        sh 'mvn -Dmaven.test.failure.ignore=true clean verify sonar:sonar'
                      }
                     
                 }
@@ -58,7 +62,9 @@ pipeline {
             }
 
             steps {
-                echo "Déploiement intégration vers $DATACENTER"
+                script {
+                    dataCenter = "$DATACENTER"
+                }
                 
             }
         }
@@ -68,7 +74,7 @@ pipeline {
 
             steps {
                 unstash 'app'
-                sh "mv *.jar ${env.DATACENTER}.jar"
+                sh "mv *.jar ${dataCenter}.jar"
                 
             }
         }
