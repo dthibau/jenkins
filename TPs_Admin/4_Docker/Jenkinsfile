@@ -1,0 +1,96 @@
+def dataCenter = ''
+
+pipeline {
+   agent none 
+
+    stages {
+        stage('Compile et tests') {
+            agent {
+                docker {
+                    image 'maven:3.8.5-openjdk-11-slim'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+            }
+            post {
+                always {
+                    junit '**/surefire-reports/*.xml'
+                }
+                success {
+                    archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
+                    dir('application/target') {
+                        stash includes: '*.jar', name: 'app'
+                    }
+                }
+                unsuccessful {
+                    mail bcc: '', body: 'Please correct ASAP', cc: '', from: '', replyTo: '', subject: 'Build failed', to: 'david.thibau@gmail.com'
+                }
+            }
+
+             
+        }
+        stage('Analyse qualité et test intégration') {
+            parallel {
+                stage('Tests d integration') {
+                    agent {
+                        docker {
+                            image 'maven:3.8.5-openjdk-11-slim'
+                            args '-v $HOME/.m2:/root/.m2'
+                        }
+                    }
+                    steps {
+                        sh 'mvn clean integration-test'
+                    }
+                    
+                }
+                 stage('Analyse Sonar') {
+                    agent any
+                    tools {
+                        jdk 'JDK11'
+                        maven 'MAVEN3'
+                    }
+                    steps {
+                        sh 'mvn -Dsonar.login=admin -Dsonar.password=admin123 clean verify sonar:sonar'
+                    }
+                    
+                }
+                stage('Dependecy scanning') {
+                    agent {
+                        docker {
+                            image 'maven:3.8.5-openjdk-11-slim'
+                            args '-v $HOME/.m2:/root/.m2'
+                        }
+                    }
+                    steps {
+                        sh 'mvn -DskipTests=true clean package dependency-check:check'
+                    }
+                    post {
+                         always {
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target', reportFiles: 'dependency-check-report.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                         }
+                    }
+                }
+            }
+            
+        }
+            
+        stage('Déploiement DockerHub') {
+            agent any         
+
+            steps {
+                unstash 'app'
+                script {
+                    def dockerImage = docker.build('dthibau/multi-module', '.')
+                    docker.withRegistry('https://registry.hub.docker.com', 'dthibau_docker') {
+                        dockerImage.push 'latest'
+                    }
+                }                   
+            }
+        }
+
+     }
+    
+}
+
