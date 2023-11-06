@@ -4,6 +4,7 @@ metadata:
   name: multi-module-build
   labels:
     app: formation
+
 spec:
   containers:
     - name: jdk
@@ -11,3 +12,15 @@ spec:
       command:
       - cat
       tty: true
+      volumeMounts:
+        - name: maven-repo
+          mountPath: /root/.m2
+    - name: dind
+      image: docker:dind  # Utilisation de l'image Docker-in-Docker
+      securityContext:
+        privileged: true  # Nécessaire pour exécuter Docker dans un conteneur
+  volumes:
+    - name: maven-repo
+      persistentVolumeClaim:
+        claimName: jenkins
+  restartPolicy: Never

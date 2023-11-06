@@ -252,6 +252,7 @@ controller:
     - junit:1240.vf9529b_881428
     - blueocean:1.27.9
     - docker-workflow:572.v950f58993843
+    - pipeline-utility-steps:2.16.0
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: true
