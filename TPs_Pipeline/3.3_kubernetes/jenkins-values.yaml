@@ -244,15 +244,8 @@ controller:
   #   targetPort: 9010 (Optional: Use to explicitly set targetPort if different from port)
 
   # List of plugins to be install during Jenkins controller start
-  installPlugins:
-    - kubernetes:4029.v5712230ccb_f8
-    - workflow-aggregator:596.v8c21c963d92d
-    - git:5.2.0
-    - configuration-as-code:1670.v564dc8b_982d0
-    - junit:1240.vf9529b_881428
-    - blueocean:1.27.9
-    - docker-workflow:572.v950f58993843
-    - pipeline-utility-steps:2.16.0
+  installPlugins: []
+
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: true
