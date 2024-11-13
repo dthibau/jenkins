@@ -29,7 +29,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - demo-control-plane
+          - jenkins-control-plane
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
