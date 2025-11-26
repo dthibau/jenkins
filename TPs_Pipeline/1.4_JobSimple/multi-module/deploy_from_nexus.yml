@@ -1,0 +1,56 @@
+---
+- name: Déployer le JAR Spring Boot depuis Nexus
+  hosts: app_servers
+  become: yes
+
+  vars:
+    jar_url: "http://localhost:8181/repository/maven-releases/org/formation/multi-module/application/0.0.3-SNAPSHOT/application-0.0.3-SNAPSHOT.jar"
+    app_dir: /opt/app
+    jar_dest: "{{ app_dir }}/app.jar"
+    service_name: spring-app
+
+  tasks:
+    - name: Installer Java (JRE)
+      apt:
+        name: openjdk-17-jre
+        state: present
+        update_cache: yes
+
+    - name: Créer le répertoire applicatif
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: Télécharger le JAR depuis Nexus
+      get_url:
+        url: "{{ jar_url }}"
+        dest: "{{ jar_dest }}"
+        mode: "0755"
+        force: yes   # pour écraser l'ancien jar en cas de nouvelle version
+
+    - name: Créer le service systemd
+      copy:
+        dest: "/etc/systemd/system/{{ service_name }}.service"
+        content: |
+          [Unit]
+          Description=Spring Boot Application
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/bin/java -jar {{ jar_dest }}
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Recharger systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: Activer et démarrer le service
+      systemd:
+        name: "{{ service_name }}"
+        enabled: yes
+        state: started
