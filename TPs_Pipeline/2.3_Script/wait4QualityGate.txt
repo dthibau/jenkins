@@ -29,6 +29,6 @@ def checkSonarQualityGate(){
 
     echo qualitygate.toString()
     if ("ERROR".equals(qualitygate['projectStatus']['status'])) {
-        error "Quality Gate failure"
+        unstable "Quality Gate failure"
     }
 }

@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
     JHIPSTER_SLEEP=0 \
@@ -11,3 +11,4 @@ CMD echo "The application will start in ${JHIPSTER_SLEEP}s..." && \
 EXPOSE 8080
 
 ADD *.jar /app.jar
+
